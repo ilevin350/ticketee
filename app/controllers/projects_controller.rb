@@ -15,8 +15,7 @@ class ProjectsController < ApplicationController
 		else
 			# Alternately, we could put the error message in the flash notice, like this:
 			# "Project has not been created - #{@project.errors.full_messages}"
-			+
-			flash[:alert] = "Project has not been created - #{@project.errors.full_messages}"
+			flash[:alert] = "Project has not been created"
 			render :action => "new"
 		end
 	end
