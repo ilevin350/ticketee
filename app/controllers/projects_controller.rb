@@ -9,8 +9,16 @@ class ProjectsController < ApplicationController
 
 	def create
 		@project = Project.new(project_params)
-		@project.save
-		redirect_to @project, notice: "Project has been created successfully"
+		if @project.save
+			flash[:notice] = "Project has been created successfully"
+			redirect_to @project
+		else
+			# Alternately, we could put the error message in the flash notice, like this:
+			# "Project has not been created - #{@project.errors.full_messages}"
+			+
+			flash[:alert] = "Project has not been created - #{@project.errors.full_messages}"
+			render :action => "new"
+		end
 	end
 
 	def show
