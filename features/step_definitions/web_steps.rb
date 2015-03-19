@@ -24,6 +24,14 @@ Then /^(?:|I )should see "([^"]*)"$/ do |text|
 	end
 end
 
+Then /^(?:|I )should not see "([^"]*)"$/ do |text|
+	if page.respond_to? :should
+		expect(page).to have_no_content(text)
+	else
+		assert page.has_no_content?(text)
+	end
+end
+
 And /^(?:|I )should be on (.+)$/ do |page_name|
 	current_path = URI.parse(current_url).path
 	if current_path.respond_to? :should
