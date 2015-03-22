@@ -7,13 +7,18 @@ class TicketsController < ApplicationController
 	end
 
 	def create
-		@ticket = @project.tickets.build(params[ticket_params])
-		if @ticket.save
-			flash[:notice] = "Ticket has been successfully created"
-			redirect_to [@project, @ticket] # Same as: project_ticket_path(@project, @ticket)
-		else
-			flash[:alert] = "Ticket has not been successfully created"
-			render action: new
+		@ticket = @project.tickets.build(ticket_params)
+		begin
+			if @ticket.save!
+				flash[:notice] = "Ticket has been successfully created"
+				redirect_to [@project, @ticket] # Same as: project_ticket_path(@project, @ticket)
+			else
+				flash[:alert] = "Ticket has not been successfully created"
+				redirect_to @project
+			end
+		rescue Exception => e
+			flash[:alert] = "Exception thrown attempting to save new ticket - #{e.message}"
+			redirect_to @project
 		end
 	end
 

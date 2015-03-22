@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe ProjectsController, type: :controller do
 	it "displays an error for a missing project" do
 		get :show, :id => "not-here"
-		response.should redirect_to(projects_path)
+		expect(:response).to redirect_to(projects_path)
 		message = "The project you were looking for could not be found."
-		flash[:alert].should eql(message)
+		expect(flash[:alert]).to eql(message)
 	end
 end
