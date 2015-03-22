@@ -1,5 +1,7 @@
 class TicketsController < ApplicationController
 	before_filter :find_project
+	before_filter :find_ticket, only: [:show, :edit, :update, :destroy]
+
 	def new
 		@ticket = @project.tickets.build # Note: build is an alias for new
 	end
@@ -15,9 +17,17 @@ class TicketsController < ApplicationController
 		end
 	end
 
+	def show
+
+	end
+
 	private
 	def find_project
 		@project = Project.find(params[:project_id])
+	end
+
+	def find_ticket
+		@ticket = @project.tickets.find(params[:id])
 	end
 
 	def ticket_params

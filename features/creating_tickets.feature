@@ -13,7 +13,7 @@ Feature: Creating Tickets
     When I fill in "Title" with "Non-standards compliance"
     And I fill in "Description" with "My pages are ugly!"
     And I press "Create Ticket"
-    Then I should see "Ticket has been created."
+    Then I should see "Ticket has been successfully created"
 
   Scenario: Creating a ticket without valid attributes fails
     When I press "Create Ticket"
