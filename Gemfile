@@ -56,3 +56,4 @@ group :test do
 	gem 'factory_girl_rails'
 end
 
+gem 'devise', '~> 3.4'

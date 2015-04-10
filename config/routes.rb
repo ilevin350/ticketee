@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # For devise - adds routes for user registration, signup,
+  # editing and confirmation, and password retrieval.
+	devise_for :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
