@@ -15,6 +15,10 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime
 #  updated_at             :datetime
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
 #
 
 require 'rails_helper'

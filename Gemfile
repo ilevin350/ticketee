@@ -46,6 +46,8 @@ group :development, :test do
   gem 'spring'
   # RSPEC
   gem 'rspec-rails', '~> 3.2'
+	# E-mail spec
+	gem 'email_spec'
 end
 
 group :test do
